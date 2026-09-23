@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Courses | Your Academy</title>
+
+  <!-- Google Fonts for Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS RESET & VARIABLES */
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --secondary: #0ea5e9;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --card-bg: #ffffff;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* HEADER & NAVIGATION */
+    header {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .navbar {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-badge {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 0.25rem 0.6rem;
+      border-radius: 8px;
+      font-size: 1.2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .btn-nav {
+      background-color: var(--primary);
+      color: white !important;
+      padding: 0.6rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 600;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+    }
+
+    .btn-nav:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: linear-gradient(135deg, #1e293b, var(--dark));
+      color: white;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .page-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero p {
+      color: #94a3b8;
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* COURSES SECTION */
+    .courses-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem 2rem;
+    }
+
+    .filter-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: white;
+      border: 1px solid #cbd5e1;
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      color: var(--gray);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .course-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    }
+
+    .course-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .course-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .course-category {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .course-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: var(--dark);
+    }
+
+    .course-description {
+      color: var(--gray);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .course-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    .course-price {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .btn-enroll {
+      background-color: var(--light);
+      color: var(--primary);
+      border: 1px solid #e2e8f0;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .btn-enroll:hover {
+      background-color: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--dark);
+      color: #94a3b8;
+      padding: 4rem 2rem 2rem 2rem;
+      border-top: 1px solid #1e293b;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-col h4 {
+      color: white;
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-col ul li a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-col ul li a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid #1e293b;
+      text-align: center;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header>
+    <nav class="navbar">
+      <a href="Index.html" class="logo">
+        <span class="logo-badge">YA</span>
+        Your Academy
+      </a>
+      <ul class="nav-links">
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="courses.html" class="active">Courses</a></li>
+        <li><a href="admission.html">Admission</a></li>
+        <li><a href="contact.html" class="btn-nav">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <h1>Explore Our Programs</h1>
+    <p>Find the course that aligns with your goals and start building your future today.</p>
+  </section>
+
+  <!-- COURSES SECTION -->
+  <section class="courses-section">
+    <!-- Filter Buttons -->
+    <div class="filter-container">
+      <button class="filter-btn active" onclick="filterCourses(event, 'all')">All Courses</button>
+      <button class="filter-btn" onclick="filterCourses(event, 'tech')">Technology</button>
+      <button class="filter-btn" onclick="filterCourses(event, 'design')">Design</button>
+      <button class="filter-btn" onclick="filterCourses(event, 'business')">Business</button>
+    </div>
+
+    <!-- Course Cards Grid -->
+    <div class="courses-grid">
+      <!-- Course 1 -->
+      <div class="course-card" data-category="tech">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Web Development" class="course-img">
+        <div class="course-body">
+          <span class="course-category">Technology</span>
+          <h3 class="course-title">Full-Stack Web Development</h3>
+          <p class="course-description">Master HTML, CSS, JavaScript, React, and Node.js to build modern web applications from scratch.</p>
+          <div class="course-footer">
+            <span class="course-price">$499</span>
+            <a href="admission.html" class="btn-enroll">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course 2 -->
+      <div class="course-card" data-category="design">
+        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=600&q=80" alt="UI/UX Design" class="course-img">
+        <div class="course-body">
+          <span class="course-category">Design</span>
+          <h3 class="course-title">UI/UX Design Masterclass</h3>
+          <p class="course-description">Learn user research, wireframing, prototyping, and modern interface design with Figma.</p>
+          <div class="course-footer">
+            <span class="course-price">$399</span>
+            <a href="admission.html" class="btn-enroll">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course 3 -->
+      <div class="course-card" data-category="business">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Digital Marketing" class="course-img">
+        <div class="course-body">
+          <span class="course-category">Business</span>
+          <h3 class="course-title">Digital Marketing Strategy</h3>
+          <p class="course-description">Understand SEO, social media marketing, content strategy, and analytics to grow any business.</p>
+          <div class="course-footer">
+            <span class="course-price">$299</span>
+            <a href="admission.html" class="btn-enroll">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course 4 -->
+      <div class="course-card" data-category="tech">
+        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Data Science" class="course-img">
+        <div class="course-body">
+          <span class="course-category">Technology</span>
+          <h3 class="course-title">Data Science & Machine Learning</h3>
+          <p class="course-description">Analyze complex datasets, build predictive models, and learn Python data frameworks.</p>
+          <div class="course-footer">
+            <span class="course-price">$599</span>
+            <a href="admission.html" class="btn-enroll">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>Your Academy</h4>
+        <p style="font-size: 0.9rem;">Empowering learners globally through quality education and accessible online courses.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="Index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="admission.html">Admission</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Your Academy. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT FOR CATEGORY FILTERING -->
+  <script>
+    function filterCourses(event, category) {
+      // Remove active class from all filter buttons
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      // Add active class to clicked button
+      if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+      }
+
+      // Filter course cards
+      const cards = document.querySelectorAll('.course-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
