@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Your Academy</title>
+
+  <!-- Google Fonts for Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS RESET & VARIABLES */
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --secondary: #0ea5e9;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --card-bg: #ffffff;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* HEADER & NAVIGATION */
+    header {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .navbar {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-badge {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 0.25rem 0.6rem;
+      border-radius: 8px;
+      font-size: 1.2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .btn-nav {
+      background-color: var(--primary);
+      color: white !important;
+      padding: 0.6rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 600;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: linear-gradient(135deg, #1e293b, var(--dark));
+      color: white;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .page-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero p {
+      color: #94a3b8;
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* CONTACT SECTION */
+    .contact-section {
+      max-width: 1280px;
+      margin: -3rem auto 6rem auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+    }
+
+    .info-card {
+      background: var(--dark);
+      color: white;
+      padding: 2.5rem;
+      border-radius: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .info-item h3 {
+      font-size: 1.1rem;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .info-item p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+
+    .form-card {
+      background: white;
+      padding: 3rem;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+      font-size: 0.95rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: var(--transition);
+      background: var(--light);
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      padding: 1rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-submit:hover {
+      background: var(--primary-hover);
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--dark);
+      color: #94a3b8;
+      padding: 4rem 2rem 2rem 2rem;
+      border-top: 1px solid #1e293b;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-col h4 {
+      color: white;
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-col ul li a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-col ul li a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid #1e293b;
+      text-align: center;
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page-hero {
+        min-height: 280px;
+      }
+      .form-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header>
+    <nav class="navbar">
+      <a href="Index.html" class="logo">
+        <span class="logo-badge">YA</span>
+        Your Academy
+      </a>
+      <ul class="nav-links">
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="admission.html">Admission</a></li>
+        <li><a href="contact.html" class="btn-nav">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <h1>Contact Us</h1>
+    <p>We're here to help. Reach out with any questions or inquiries.</p>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-section">
+    <div class="contact-grid">
+      <div class="info-card">
+        <h2>Get in Touch</h2>
+        <div class="info-item">
+          <h3>Address</h3>
+          <p>123 Academy Way, Education Suite 400<br>Innovation City, Tech Nation</p>
+        </div>
+        <div class="info-item">
+          <h3>Email Us</h3>
+          <p>support@youracademy.edu</p>
+        </div>
+        <div class="info-item">
+          <h3>Call Us</h3>
+          <p>+1 (800) 555-0199</p>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <form action="#" method="POST">
+          <div class="form-group">
+            <label for="cname">Name</label>
+            <input type="text" id="cname" name="name" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="cemail">Email</label>
+            <input type="email" id="cemail" name="email" placeholder="Your email address" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="What is this regarding?">
+          </div>
+          <div class="form-group">
+            <label for="cmessage">Message</label>
+            <textarea id="cmessage" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>Your Academy</h4>
+        <p style="font-size: 0.9rem;">Empowering learners globally through quality education and accessible online courses.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="Index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="admission.html">Admission</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Your Academy. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

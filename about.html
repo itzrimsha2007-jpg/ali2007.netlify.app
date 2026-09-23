@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Your Academy</title>
+
+  <!-- Google Fonts for Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS RESET & VARIABLES */
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --secondary: #0ea5e9;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --card-bg: #ffffff;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* HEADER & NAVIGATION */
+    header {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .navbar {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-badge {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 0.25rem 0.6rem;
+      border-radius: 8px;
+      font-size: 1.2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .btn-nav {
+      background-color: var(--primary);
+      color: white !important;
+      padding: 0.6rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 600;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+    }
+
+    .btn-nav:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: linear-gradient(135deg, #1e293b, var(--dark));
+      color: white;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .page-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero p {
+      color: #94a3b8;
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ABOUT CONTENT */
+    .about-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 6rem;
+    }
+
+    .about-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .about-text h2 {
+      font-size: 2.25rem;
+      margin-bottom: 1.25rem;
+      color: var(--dark);
+    }
+
+    .about-text p {
+      color: var(--gray);
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+    }
+
+    /* VALUES */
+    .values-section {
+      background: white;
+      padding: 6rem 2rem;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1280px;
+      margin: 3rem auto 0 auto;
+    }
+
+    .value-card {
+      padding: 2rem;
+      border-radius: 16px;
+      background: var(--light);
+      border: 1px solid #e2e8f0;
+    }
+
+    .value-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: var(--primary);
+    }
+
+    .value-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      max-width: 1280px;
+      margin: 6rem auto;
+      padding: 0 2rem;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      padding: 4rem 2rem;
+      border-radius: 24px;
+      text-align: center;
+      color: white;
+    }
+
+    .cta-box h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta-box p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+    }
+
+    .btn-white {
+      background-color: white;
+      color: var(--primary);
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-block;
+      transition: var(--transition);
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--dark);
+      color: #94a3b8;
+      padding: 4rem 2rem 2rem 2rem;
+      border-top: 1px solid #1e293b;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-col h4 {
+      color: white;
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-col ul li a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-col ul li a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid #1e293b;
+      text-align: center;
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header>
+    <nav class="navbar">
+      <a href="Index.html" class="logo">
+        <span class="logo-badge">YA</span>
+        Your Academy
+      </a>
+      <ul class="nav-links">
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="admission.html">Admission</a></li>
+        <li><a href="contact.html" class="btn-nav">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <h1>About Our Academy</h1>
+    <p>We are on a mission to deliver accessible, high-quality education to learners everywhere.</p>
+  </section>
+
+  <!-- MAIN ABOUT CONTENT -->
+  <section class="about-section">
+    <div class="grid-2">
+      <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" alt="Team collaborating" class="about-image">
+      <div class="about-text">
+        <h2>Empowering the Next Generation of Achievers</h2>
+        <p>Founded with the goal of making world-class education available to all, Your Academy brings together top instructors and cutting-edge technology to create a dynamic learning experience.</p>
+        <p>Whether you're starting a new career, mastering a specific skill, or pursuing a personal passion, our curriculum is designed to give you real-world results.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE VALUES -->
+  <section class="values-section">
+    <div style="max-width: 1280px; margin: 0 auto; text-align: center;">
+      <h2>Our Core Values</h2>
+      <p style="color: var(--gray);">The principles that guide everything we do.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <h3>Excellence</h3>
+        <p>We maintain high standards in course quality, instructor selection, and student support.</p>
+      </div>
+      <div class="value-card">
+        <h3>Accessibility</h3>
+        <p>Learning should be open to everyone, regardless of location or background.</p>
+      </div>
+      <div class="value-card">
+        <h3>Innovation</h3>
+        <p>We constantly update our curriculum to match evolving industry trends and needs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION -->
+  <section class="cta-section">
+    <div class="cta-box">
+      <h2>Ready to Start Your Learning Journey?</h2>
+      <p>Explore our wide selection of courses and find the perfect path for your goals.</p>
+      <a href="courses.html" class="btn-white">Browse Courses</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>Your Academy</h4>
+        <p style="font-size: 0.9rem;">Empowering learners globally through quality education and accessible online courses.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="Index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="admission.html">Admission</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Your Academy. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
